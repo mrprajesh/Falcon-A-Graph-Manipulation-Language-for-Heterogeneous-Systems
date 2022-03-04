@@ -137,7 +137,7 @@ if(d2 && d2->libdtype==POINT_TYPE){
 if(it==2)this->expr1->lhs->libdtype=POINT_TYPE;
 else if(it==3)this->expr1->lhs->libdtype=POINT_TYPE;
 else if(it==4)this->expr1->lhs->libdtype=POINT_TYPE;
-else{ 
+else{
 if(ERRPRINT)
 fprintf(stderr,"error line no:%d-invalid iterator for Point datatype\n",this->lineno);
 errflag=1;
@@ -166,7 +166,7 @@ if(this->expr1){
 }
 
 }
-else { 
+else {
 if(ERRPRINT)
 fprintf(stderr,"error line no:%d-invalid iterator for Collection datatype\n",this->lineno);
 
@@ -192,7 +192,7 @@ if(this->expr1){
 }
 }
 }
-else{ 
+else{
 if(ERRPRINT)
 fprintf(stderr,"error line no:%d-invalid iterator for Collection datatype\n",this->lineno);
 errflag=1;
@@ -227,7 +227,7 @@ if(x1->libdatatype==EDGE_TYPE|| x1->libdatatype==POINT_TYPE){
 if(x1->libdatatype==SET_TYPE || x1->libdatatype==COLLECTION_TYPE){
 tree_typedecl *t1=x1->next;
 int cnt=0;
-while(t1!=NULL && t1->next!=NULL &&t1->libdatatype==-1 ){ 
+while(t1!=NULL && t1->next!=NULL &&t1->libdatatype==-1 ){
 cnt++;t1=t1->next;}
 
 if(t1!=NULL && t1->libdatatype!=-1){
@@ -287,7 +287,7 @@ tree_typedecl *x1=this->lhs;
 while(x1 && (x1->datatype==-1 || x1->datatype==TYPEDEF_TYPE)){x1=x1->next;}
 if(x1->def==true){
 ;
-if(x1->datatype==ENUM_TYPE){ 
+if(x1->datatype==ENUM_TYPE){
 dir_decl *head=this->lhs->list->dirrhs;
 head->print();
 if(this->dirrhs!=NULL)this->dirrhs->print();
@@ -901,7 +901,7 @@ continue;
 
 if(expr->kernel==1)t1->ker=expr->kernel;
 dir_decl *fd1=t1->stdecl->dirrhs;
-if(fd1->params!=NULL){ 
+if(fd1->params!=NULL){
 tree_decl_stmt *tt=fd1->params;
 assign_stmt *ta=expr->arglist;
 int cnt=0;
@@ -934,7 +934,7 @@ tt->dirrhs->parent=tt->next->dirrhs;
 tt->dirrhs->forit=1;
 }
 if(tt->lhs->libdatatype==SET_TYPE){
-tree_typedecl *de2=ta->rhs->lhs->decltype;
+tree_typedecl *de2=ta->rhs->lhs->ddecltype;
 while(de2!=NULL && de2->next!=NULL){
 de2=de2->next;
 }

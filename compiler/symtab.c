@@ -131,7 +131,7 @@ struct funcall_list *fhead= it1->second->flist;//fhead=name of function,call exp
 while(fhead!=NULL){
    if(GLOBAL_TABLE.findsymbol(fhead->name)){//called function
        for(std::map<char *,statement *>::reverse_iterator it2=fnames.rbegin();it2!=fnames.rend();it2++){ //check it is part of  forea
-			if( it2->first!=NULL && !(strcmp(it2->first,fhead->name))&&it2->second!=NULL){//it2->first is also a foreach call 
+			if( it2->first!=NULL && !(strcmp(it2->first,fhead->name))&&it2->second!=NULL){//it2->first is also a foreach call
                    statement *t1=it2->second;//function declaration statement of function called in function it1->first
 				if(t0->ker>=1)t1->ker=2;
                   if(t1 && t1->stdecl && t1->stdecl->dirrhs && t1->stdecl->dirrhs->procd==1){
@@ -178,7 +178,7 @@ strcpy( decl->dirrhs->extra_name1,decl->dirrhs->name);
                     }
                }
 }
-                                
+
 void setparent(){
 for(std::map<char *,statement *>::reverse_iterator it1=fnames.rbegin();it1!=fnames.rend();it1++){ //check it is part of  forea
 	statement *t0=it1->second;
@@ -191,7 +191,7 @@ struct funcall_list *fhead= it1->second->flist;//fhead=name of function,call exp
 	   if(GLOBAL_TABLE.findsymbol(fhead->name)){//called function
 	         for(std::map<char *,statement *>::reverse_iterator it2=fnames.rbegin();it2!=fnames.rend();it2++){ //check it is part of  forea
 
-			  if( it2->first!=NULL && !(strcmp(it2->first,fhead->name))&&it2->second!=NULL){//it2->first is also a foreach call 
+			  if( it2->first!=NULL && !(strcmp(it2->first,fhead->name))&&it2->second!=NULL){//it2->first is also a foreach call
 			statement *t1=it2->second;//function declaration statement of function called in function it1->first
 if(t0->ker>=1)t1->ker=2;
 		  if(t1 && t1->stdecl && t1->stdecl->dirrhs && t1->stdecl->dirrhs->procd==1){
@@ -601,7 +601,7 @@ if(t1->extra_readfun!=NULL)fprintf(FP,"%s\n ",t1->extra_readfun);
 if(1)fprintf(FP,"alloc_extra_%s(%s,0,%s.npoints);\n",t1->name,t1->name,t1->name);
 t1->extra_readfun1=malloc(sizeof(char)*100);
 sprintf(t1->extra_readfun1,"read_and_allocate_%s(%s);\n",t1->name,t1->name);
-fprintf(FP,"}\n"); 
+fprintf(FP,"}\n");
 }
 
  t1=t1->nextv;}
@@ -658,7 +658,7 @@ if(x1->def==true){
 while(x1 && (x1->datatype==-1 || x1->datatype==TYPEDEF_TYPE)){x1=x1->next;}
 if(x1!=NULL && x1->name!=NULL)fprintf(FP1," %s ",x1->name);
 fprintf(FP1,"{\n");
-if(x1->datatype==ENUM_TYPE){ 
+if(x1->datatype==ENUM_TYPE){
 dir_decl *head=this->lhs->list->dirrhs;
 head->printcode(1);
 fprintf(FP1,"};\n");
@@ -753,10 +753,10 @@ if(tt1->name!=NULL){fprintf(FP1," %s  ", tt1->name);}tt1=tt1->next;
 }
 t1=this->dirrhs;
 while(t1!=NULL){if (t1->gpu==0){if(cnt>0)fprintf(FP1,","); fprintf(FP1," %s ",t1->name);
-if(t1->ctype==CARR_TYPE){fprintf(FP1,"["); 
+if(t1->ctype==CARR_TYPE){fprintf(FP1,"[");
 t1=t1->next;
 if(t1 && t1->assign!=NULL){
-t1->assign->printcode(t1->assign);}fprintf(FP1,"]");} 
+t1->assign->printcode(t1->assign);}fprintf(FP1,"]");}
 cnt++; }
 if(t1->parent!=NULL && f==1 && t1->libdtype==-1){
 if(t1->parent && t1->parent->extra_name && t1->libdtype==-1){
@@ -1144,7 +1144,7 @@ if(t1->sbrack_flag==1)fprintf(FP1,"] ");
 if(t1->rhs!=NULL){
 tree_expr *te1= t1->rhs;
 while(te1->lhs!=NULL)te1=te1->lhs;
-fprintf(FP1,"="); 
+fprintf(FP1,"=");
 char temp[250];
 for(int i=0;i<250;i++)temp[i]='\0';
 t1->rhs->printcode1(t1->rhs,temp);
@@ -1184,7 +1184,7 @@ head->dtype=type1->datatype;
 head->tp1=type1;
 head->libdtype=type1->libdatatype;
 head->stype=type->storagetype;
-head->decltype=type1;
+head->ddecltype=type1;
 head=head->nextv;
 }
 
@@ -1306,7 +1306,7 @@ this->newtypes[type->name]=type;
 }else {
 }
 }
-} 
+}
 if(id!=NULL){
 int f1=0;
 if(type->name!=NULL){
@@ -1389,7 +1389,7 @@ if(! strcmp(c,name)){return  variable;}
         std::set<dir_decl *>::iterator J;
         dir_decl *variable;
          dir_decl *head=id;
-          while(head!=NULL){ 
+          while(head!=NULL){
         for (I = entries.begin(); I != entries.end(); I++) {
             symtableentry* e = *I;
         for (J =e->vars.begin(); J != e->vars.end(); J++) {
@@ -1422,7 +1422,7 @@ if(! strcmp(c,head->name)){return  e;}
 }
     void symtable::add_symbol(symtableentry* e) {
         entries.insert(e);
-       
+
     }
 int globsymtable::checkdup(dir_decl *id){
 dir_decl *head=id;
@@ -1487,7 +1487,7 @@ head->tp1=type1;
 head->stype=type->storagetype;
 head->libstable=currsymtab->libsym;
 head->ppts=type1->ppts;
-head->decltype=type1;
+head->ddecltype=type1;
 head=head->nextv;
 }
 struct extra_ppts *ep=type1->ppts;
@@ -1495,7 +1495,7 @@ while(ep!=NULL){
 ep=ep->next;
 }
 }
-bool libsymtable::addsymbol1(dir_decl *id,tree_typedecl *type,libsymtableentry *&old_def){         
+bool libsymtable::addsymbol1(dir_decl *id,tree_typedecl *type,libsymtableentry *&old_def){
 libsymtableentry *newref=new libsymtableentry();
          newref->insert(type,id);
 dir_decl *head=id;
@@ -1511,7 +1511,7 @@ entries.insert(newref);
         std::set<dir_decl *>::iterator J;
         dir_decl *variable;
          dir_decl *head=id;
-          while(head!=NULL){ 
+          while(head!=NULL){
         for (I = entries.begin(); I != entries.end(); I++) {
             libsymtableentry* e = *I;
         for (J =e->vars.begin(); J != e->vars.end(); J++) {
@@ -1554,7 +1554,7 @@ ex=d2->ppts;
     libsymtableentry *old=NULL;
 type1->libdatatype=-1;
 this->libsym->addsymbol1(x,type1,old);
-} 
+}
 if(type1->libdatatype==G_P_TYPE){
 newitr[x->name]=++nitr;
 if(type1->t1 && type1->t1->name){
@@ -1625,7 +1625,7 @@ ret=5;
 return ret;
 }
 rs=t1->stassign->rhs;
-if(rs!=NULL&& check_gpu_expr(rs)==1){if(ret==1)ret=3;else ret=2;} 
+if(rs!=NULL&& check_gpu_expr(rs)==1){if(ret==1)ret=3;else ret=2;}
 return ret;
 }
 recu_expr_type(tree_expr *expr){
@@ -1884,7 +1884,7 @@ if(gf==1){ fprintf(FP1,"GGraph ");
 int cnt=0;
 t2=t1->stassign->rhs->rhs->nextv;
 while(t2!=NULL){if (t2->gpu==1){
-cnt++; 
+cnt++;
 }t2=t2->nextv;
 }
 fprintf(FP1,";\n");

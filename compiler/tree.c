@@ -123,7 +123,7 @@ if(expr->lhs)expr->lhs->findgpuvars(expr->lhs);
 if(expr->rhs)expr->rhs->findgpuvars(expr->rhs);
 }
 dir_decl *d1=expr->lhs;
-if( expr && expr->expr_type==VAR ){ 
+if( expr && expr->expr_type==VAR ){
 
 if(d1 && d1->gpu==1 && d1->libdtype!=GRAPH_TYPE && Gkernel==0){
 }
@@ -137,7 +137,7 @@ expr->lhs->FOR_findgpuvars(expr->lhs);
 expr->rhs->FOR_findgpuvars(expr->rhs);
 }
 dir_decl *d1=expr->lhs;
-if(expr->expr_type==VAR ){ 
+if(expr->expr_type==VAR ){
 
 if(d1 && d1->gpu==1 && d1->libdtype!=GRAPH_TYPE){
 fprintf(FP1,"%s  temp%d;\n cudaMemcpy((void *)&temp%d,%s,sizeof( %s),cudaMemcpyDeviceToHost);\n",dtypenames[d1->dtype],extemp,extemp,expr->name,dtypenames[d1->dtype]);
@@ -398,7 +398,7 @@ strcat(print_string,")");
 GPSREF=0;
 return;
 }
-if(!strcmp(expr->rhs->name,"Union")&& (strlen(expr->rhs->name)==strlen("Union"))){ 
+if(!strcmp(expr->rhs->name,"Union")&& (strlen(expr->rhs->name)==strlen("Union"))){
 char temp[25];
 strcat(print_string,expr->lhs->name);
 strcat(print_string,".");
@@ -614,7 +614,7 @@ if(strstr(expr->rhs->name,et1->name)!=NULL/* && (strlen(expr->rhs->name)==(strle
 mf=1;mdtype=et1->t1->datatype; break;}
 	et1=et1->next;
 	}
-if(mf==1){ 
+if(mf==1){
 char temp[200];
 for(int i=0;i<200;i++)temp[i]='\0';
 sprintf(temp,"((%s *)(%s.extra))->",expr->lhs->lhs->extra_name,expr->lhs->name);// /*2*/
@@ -688,10 +688,10 @@ if(strstr(expr->rhs->name,et1->name)!=NULL && et1->t1->libdatatype==G_P_TYPE){
 mf=1;mdtype=et1->t1->datatype; break;}
 	et1=et1->next;
 	}
-if(mf==1){ 
+if(mf==1){
 char temp[200];
 for(int i=0;i<200;i++)temp[i]='\0';
-if(Gkernel==0 ){ 
+if(Gkernel==0 ){
 fprintf(FP1,"%s temp%d;\n",expr->lhs->lhs->extra_name,extemp);
 fprintf(FP1,"cudaSetDevice(%d);\n",expr->lhs->lhs->dev_no);
 fprintf(FP1,"cudaMemcpy(&temp%d,((%s *)(%s.extra)),sizeof(%s),cudaMemcpyDeviceToHost);\n",extemp,expr->lhs->lhs->extra_name,expr->lhs->name,expr->lhs->lhs->extra_name);
@@ -736,7 +736,7 @@ return;
 	}
 	char temp[100],temp1[100];
 	for(int i=0;i<100;i++)temp[i]=temp1[i]='\0';
-	if(d1->it<6  && d1->it>=0){sprintf(temp,"((%s *)(%s.extra))->",d1->extra_name,d1->parent->name); 
+	if(d1->it<6  && d1->it>=0){sprintf(temp,"((%s *)(%s.extra))->",d1->extra_name,d1->parent->name);
 	strcat(print_string,temp);
 	}
 	if(d1->it>=6){
@@ -783,16 +783,16 @@ strcat(temp,it->first);
 	}
 	}
 	if(d1->it>=6){
-	sprintf(temp1,"[%s].",d1->extra_name1); 
+	sprintf(temp1,"[%s].",d1->extra_name1);
 	strcat(print_string,temp1);
 	}
 	expr->rhs->printcode1(expr->rhs,print_string);
 	if(flagit==0 && d1->it==-1){
-	sprintf(temp1,"[%s]./**/",d1->extra_name1); 
+	sprintf(temp1,"[%s]./**/",d1->extra_name1);
 	strcat(print_string,temp1);
 	}
 	if(d1->it<6 && d1->it>=0){
-	sprintf(temp1,"[%s]",d1->extra_name1); 
+	sprintf(temp1,"[%s]",d1->extra_name1);
 	strcat(print_string,temp1);
 	}
 	struct extra_ppts *et1;
@@ -802,7 +802,7 @@ strcat(temp,it->first);
 	while(et1!=NULL){
 	if(!strcmp(et1->name,expr->rhs->name)){mf=1;mdtype=et1->t1->datatype;break;}
 	et1=et1->next;
-	} 
+	}
 	if(mdtype==11){
 	strcat(print_string,".");
 	expr->tp1=et1->t1;
@@ -816,7 +816,7 @@ GPSREF=0;
 	for(int i=0;i<100;i++)temp[i]=temp1[i]='\0';
 	for (std::map<char *,int>::iterator it1=newitr.begin(); it1!=newitr.end(); ++it1){
 	if(it1->second==d1->it){
-	if(d1->parent)sprintf(temp,"((%s *)(%s.extra))->%s",d1->extra_name,d1->parent->name,it1->first); 
+	if(d1->parent)sprintf(temp,"((%s *)(%s.extra))->%s",d1->extra_name,d1->parent->name,it1->first);
 	break;
 	}
 	}
@@ -922,7 +922,7 @@ fprintf(FP1,"NOT BASIC LIBTYPES %d\n",d1->libdtype);
 	}
 	}
 	}
-	if(flag==1 /*&& ariflag==1*/){//now make function for field acess 
+	if(flag==1 /*&& ariflag==1*/){//now make function for field acess
 
 	if(expr->lhs->lhs->libdtype==GRAPH_TYPE){
 	if(i==1||i==3){
@@ -1001,7 +1001,7 @@ return;
 	if(d1->libdtype==GRAPH_TYPE){
 	EXTRAFLAG=1;
 	}
-	break;}//mdofied on fe14AN MARCH24 
+	break;}//mdofied on fe14AN MARCH24
 	}
 	if(ex->t1->datatype!=-1&& expr->rhs->expr_type==VAR){expr->libdtype=-1;
 	expr->dtype=ex->t1->datatype;
@@ -1159,7 +1159,7 @@ EXTRAFLAG=1;
 	for(int i=0;i<10;i++)tempgp[i]='\0';
 	if(strstr(print_string,"extra))->")==NULL)printf(tempgp,".");
 	if(EXTRAFLAG==0)strcat(print_string,tempgp);
-	} 
+	}
 	if(strstr(print_string,"extra))->")==NULL)strcat(print_string,".");
 	expr->rhs->printcode1(expr->rhs,print_string);
 	}
@@ -1224,11 +1224,11 @@ return;}
 	strcat(print_string,temp);
 	return;
 	}
-	if(expr->lhs!=NULL && expr->lhs->parent!=NULL && expr->lhs->extra_name2!=NULL && expr->lhs->extra_name1!=NULL && expr->lhs->extra_name!=NULL&&GPSREF)sprintf(temp,"((%s *)%s.extra)->%s/*2*/[%s]",expr->lhs->extra_name,expr->lhs->parent->name,expr->lhs->extra_name2,expr->lhs->extra_name1); 
+	if(expr->lhs!=NULL && expr->lhs->parent!=NULL && expr->lhs->extra_name2!=NULL && expr->lhs->extra_name1!=NULL && expr->lhs->extra_name!=NULL&&GPSREF)sprintf(temp,"((%s *)%s.extra)->%s/*2*/[%s]",expr->lhs->extra_name,expr->lhs->parent->name,expr->lhs->extra_name2,expr->lhs->extra_name1);
 	else {
 	 if(expr->lhs!=NULL && expr->lhs->extra_name1!=NULL)sprintf(temp,"%s",expr->lhs->extra_name1);
 	else if(expr->lhs!=NULL && expr->lhs->parent!=NULL && expr->lhs->parent->extra_name!=NULL){
-sprintf(temp,"((%s *)(%s.extra))->/*4*/",expr->lhs->parent->extra_name,expr->lhs->parent->name); 
+sprintf(temp,"((%s *)(%s.extra))->/*4*/",expr->lhs->parent->extra_name,expr->lhs->parent->name);
 dir_decl *d1=expr->lhs;
 if(d1!=NULL && d1->parent!=NULL &&GPSREF==0 &&d1->tp1 && d1->tp1->name){
 			for (std::map<char *,char *>::iterator it=newitrdtype.begin(); it!=newitrdtype.end(); ++it){
@@ -1239,8 +1239,8 @@ return;
 }
 }
 if(d1!=NULL && d1->parent!=NULL &&GPSREF){
-if(strstr(print_string,"extra")==NULL)sprintf(temp,"((%s *)(%s.extra))->/*4*/",expr->lhs->parent->extra_name,expr->lhs->parent->name); 
-//sprintf(temp," "); 
+if(strstr(print_string,"extra")==NULL)sprintf(temp,"((%s *)(%s.extra))->/*4*/",expr->lhs->parent->extra_name,expr->lhs->parent->name);
+//sprintf(temp," ");
 strcat(print_string,temp);
 			for (std::map<char *,char *>::iterator it=newitrdtype.begin(); it!=newitrdtype.end(); ++it){
 				if(!strcmp(it->second,d1->tp1->name)){
@@ -1359,13 +1359,13 @@ t1=t1->next;
 
 if(barflag==1&&t1 && t1->rhs)if(!strcmp(t1->rhs->name,"block")&&strlen(t1->rhs->name)==strlen("block"))barflag=2;
 if(barflag==2)sprintf(temp,"__syncthreads();\n");
-      
+
 
            }
 
 	else {
 
-      
+
 
 	sprintf(temp,"%s",expr->name);
 	}
@@ -1657,7 +1657,7 @@ return;
 	if(type==CAST_EXPR){
 	if(expr->tpname!=NULL){
 	fprintf(FP1,"(");
-        char a[100];   
+        char a[100];
 	expr->tpname->printcode(a);
 	fprintf(FP1,"%s)",a);
 	}
@@ -1665,7 +1665,7 @@ return;
 	if(type==TYPE_SIZEOF){
 	fprintf(FP1,"sizeof(");
 	if(expr->tpname!=NULL){
-        char a[100];   
+        char a[100];
 	expr->tpname->printcode(a);
 	fprintf(FP1,"%s)",a);
 	}
@@ -1674,7 +1674,7 @@ return;
 	if(type==TYPE_INIT){
 	if(expr->tpname!=NULL){
 	fprintf(FP1,"(");
-        char a[100];   
+        char a[100];
 	expr->tpname->printcode(a);
 	fprintf(FP1,"%s)",a);
 	}
@@ -1791,7 +1791,7 @@ EXTRAFLAG=1;
 	if(d1->libdtype==GRAPH_TYPE && ex->libdtype!=G_P_TYPE &&ariflag==1){
 	fprintf(stderr,"cannot directly access %s property %s from graph  %s\n",libdtypenames[ex->libdtype] , ex->name,d1->name);
 	errflag=1;
-	}else {expr->libdtype=ex->t1->libdatatype;flag=1;break;}//mdofied on fe14AN MARCH24 
+	}else {expr->libdtype=ex->t1->libdatatype;flag=1;break;}//mdofied on fe14AN MARCH24
 	}
 	if(ex->t1->datatype!=-1&& expr->rhs->expr_type==VAR){expr->libdtype=-1;
 	expr->dtype=ex->t1->datatype;
@@ -1986,7 +1986,7 @@ return;
 	if(!strcmp(it->first,expr->name)){//printf("\n*******a call to function defined in this file*****\n");
 	statement *t1=it->second;
 	dir_decl *fd1=t1->stdecl->dirrhs;
-	if(fd1->params!=NULL){ 
+	if(fd1->params!=NULL){
 	tree_decl_stmt *tt=fd1->params;
 	assign_stmt *ta=expr->arglist;
 	int cnt=0;
@@ -2131,7 +2131,7 @@ return;
 
 	tree_node* tree_node::getparent() {
 		return parent;
-	    
+
 	}
 void tree_node::setnodetype(TREE_NODE_TYPE nt) {
 		nodetype = nt;
@@ -2142,7 +2142,7 @@ void tree_node::setnodetype(TREE_NODE_TYPE nt) {
 	    }
 
 	tree_id::tree_id(){
-	name=NULL;next=NULL;stable=NULL;decltype=NULL;dtype=-1;stype=-1;ctype=-1;idrhs=NULL;arr_list=NULL;rhs=NULL;procdef=NULL;ptrfun=0;dirdecl=NULL;}
+	name=NULL;next=NULL;stable=NULL;ddecltype=NULL;dtype=-1;stype=-1;ctype=-1;idrhs=NULL;arr_list=NULL;rhs=NULL;procdef=NULL;ptrfun=0;dirdecl=NULL;}
 	char *tree_id::getname(){
 	return name;
 	}

@@ -10,13 +10,13 @@ struct UNION_KER {
 	struct UNION_KER *next;
 };
 //node type of tree_node.THIS DATATYPE IS NOT USED. field nodetype of class treenode
-enum TREE_NODE_TYPE  
+enum TREE_NODE_TYPE
 {
 	TREE_NODE,
-	TREE_ID,       // 
+	TREE_ID,       //
 	TREE_FIELD,    // A.B
 	TREE_MAPACCESS,    // A[B]
-	TREE_IDLIST,   // A, B, C, 
+	TREE_IDLIST,   // A, B, C,
 	TREE_TYPEDECL, // INT
 	TREE_ARGDECL,  // a,b : B
 	TREE_PROCDEF,  // proc A() {}
@@ -25,11 +25,11 @@ TREE_EXPR_RDC,       // c + 3
 TREE_EXPR_BUILTIN,   // c + 3
 TREE_EXPR_FOREIGN,  // Foreign Expression
 TREE_EXPR_MAPACCESS,
-TREE_SENT,     // 
+TREE_SENT,     //
 TREE_SENTBLOCK, // { ... }
 TREE_ASSIGN,   // C =D
 TREE_VARDECL,  // INT x;
-TREE_FOREACH,  
+TREE_FOREACH,
 TREE_FOR,
 TREE_ARRREF,
 TREE_DOWHILE,
@@ -42,13 +42,13 @@ TREE_FOREIGN,  // Foreign syntax
 TREE_NOP,
 TREE_INT,
 TREE_FLOAT,
-TREE_ENUMCONST,    
+TREE_ENUMCONST,
 TREE_STRING,
 TREE_BOOL
 };
 //stores inbuilt size of fileds/functions on each library  datatype.
 //array of fields and functions available in grammar.y
-enum SIZES { 
+enum SIZES {
 	fieldgraph=7,
 	fieldedge=4,
 	fieldpoint=8,
@@ -62,7 +62,7 @@ funcoll=9,
 libfun=5,
 iter=6
 };
-  
+
 #define LIBTYPESIZE 8
 //stores library datatype of variable(dir_decl)
 enum LIBDATATYPE {
@@ -77,7 +77,7 @@ P_P_TYPE,//7
 ITERATOR_TYPE,//8
 LINT_TYPE//9
 };
-#define TYPESIZE 16 
+#define TYPESIZE 16
 enum DATATYPE {//stores datatype of variable / constant
 INT_TYPE,//0
 FLOAT_TYPE,//1
@@ -109,7 +109,7 @@ REGISTER_STR,
 STATIC_STR,
 TYPEDEF_STR
 };
-//stores the compound  type 
+//stores the compound  type
 enum COMPOUNDTYPE{
 CSTRUCT_TYPE,
 CENUM_TYPE,
@@ -127,10 +127,10 @@ double fval;//if node is of type TREE_FLOAT
 int  ptrflag;//valid if node has ptr flag set
 char *ptrstring;// not sure
     int line;//strores line number in high level code
-int getline(); 
-tree_node* getparent(); 
+int getline();
+tree_node* getparent();
 TREE_NODE_TYPE getnodetype();
-  void setparent(tree_node* ); 
+  void setparent(tree_node* );
 void setnodetype(TREE_NODE_TYPE nt) ;
 tree_node();
 //    symtab* sym_vars;
@@ -152,7 +152,7 @@ NBRS2_ITTYPE//8.for edge
 class tree_typedecl; //type declaration
 class tree_expr;//tree expression
 class proc_id;
-class dir_decl;//variable 
+class dir_decl;//variable
 struct funcall_list {
 char *name;
 struct funcall_list *next;
@@ -167,7 +167,7 @@ tree_id *next;
 tree_expr *rhs;
 dir_decl *dirdecl;
 class symtable *stable;
-class tree_typedecl *decltype;
+class tree_typedecl *ddecltype;
 DATATYPE  dtype;
 STORAGETYPE stype;
 COMPOUNDTYPE ctype;
@@ -204,7 +204,7 @@ char *extra_name;//used for properties/iteratos of graph for code generation
 char *extra_name1;//used for properties/iteratos of graph for code generation
 char *extra_name2;//used for properties/iteratos of graph for code generation
 char *extra_fun;
-char *update_fun;//partition update function 
+char *update_fun;//partition update function
 char *extra_readfun,*extra_readfun1;
 struct extra_ppts *ppts;//extra properties of graph
 dir_decl *typelist;//type qualifier list in grammar type qualifier can have name CONST,VOLATILE etc
@@ -221,7 +221,7 @@ bool arg;
 bool local;
 bool close_brack;// brack close in (declarator )
 bool arr_flag;
-bool stat;//if STATIC keyword is there 
+bool stat;//if STATIC keyword is there
  tree_id *type_qual;
 tree_typedecl *tp1;
 tree_expr *assign;//assignment expression in direct_declarator
@@ -235,7 +235,7 @@ int ptrflag;//valid if ptr
 int ptrcnt;//how many pointers
 class symtable *stable;//pointer to symtable
 class libsymtable *libstable;//pointer to libsymtable, for library datatype
-class tree_typedecl *decltype;
+class tree_typedecl *ddecltype;
 DATATYPE  dtype;//datatype of variable
 LIBDATATYPE  libdtype;//lib dataype of variable
 STORAGETYPE stype;//storage class extren ,auto etc
@@ -328,7 +328,7 @@ class tree_expr *middle;//middle part of assignment.****Not used in this version
 bool semi;//if semi colomn to be put after assignment
 ASSIGN_TYPE asstype;//type of assignment
 class assign_stmt *next;//next in list
-void print1(bool);//print 
+void print1(bool);//print
 void printcode(bool);//print fo file
 void printcode1(char *,bool);//print to file
 };
