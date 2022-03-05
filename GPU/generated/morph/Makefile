@@ -1,7 +1,7 @@
 TOPLEVEL := ../../..
 APP=morph
 NVCC=/usr/local/cuda/bin/nvcc
-archtech=sm_20
+archtech=sm_50
 all:
 	$(NVCC) -O3  -arch=$(archtech) -I ./dmrheader falcondmr.cu -o dmr
 	cp dmr $(TOPLEVEL)/bin/GPU/morph/
