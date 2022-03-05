@@ -1,13 +1,13 @@
 MYPROGRAM= flcn
 MYINCLUDES= ./
 CC=g++
-CFLAGS=  -w -fpermissive 
-APPSALL=sssp bfs mst cc 
+CFLAGS=  -w -fpermissive
+APPSALL=sssp bfs mst cc
 APPSALLGEN=ssspbin bfsbin mstbin ccbin
-CUDACODES=tc 
-CUDACODESGEN=tcbin 
+CUDACODES=tc
+CUDACODESGEN=tcbin
 MORPHCODES=morph
-all:  $(MYPROGRAM) $(APPSALL)   $(MORPHCODES) $(APPSALLGEN) $(CUDACODES) $(CUDACODESGEN)
+all:  $(MYPROGRAM) $(APPSALL) $(APPSALLGEN) $(CUDACODES) $(CUDACODESGEN) $(MORPHCODES)
 $(MORPHCODES):
 	make -C apps/GPU/$@
 	make -C GPU/generated/$@
@@ -15,9 +15,9 @@ $(MORPHCODES):
 	make -C CPU/generated/$@
 	make -C CPU-Galois/generated/$@
 $(MYPROGRAM):
-	@cd compiler;make 
+	@cd compiler;make
 $(APPSALL):
-	make -C apps/GPU/$@ 
+	make -C apps/GPU/$@
 	make -C apps/CPU/$@
 	make -C apps/CPU-Galois/$@
 $(APPSALLGEN):
@@ -25,7 +25,7 @@ $(APPSALLGEN):
 	make -C CPU/generated/$@
 	make -C CPU-Galois/generated/$@
 $(CUDACODES):
-	make -C apps/GPU/$@ 
+	make -C apps/GPU/$@
 	make -C apps/CPU/$@
 $(CUDACODESGEN):
 	make -C GPU/generated/$@
